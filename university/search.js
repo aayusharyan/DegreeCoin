@@ -203,14 +203,14 @@ const loadUniversityData = async university => {
         single_course_name_elem.innerText = course.name;
     });
 
-    if(some_university_data.name != null && some_university_data.name != "") {
-        university_name_elems.forEach(single_university_name_elem => {
+    university_name_elems.forEach(single_university_name_elem => {
+        if(some_university_data.name != null && some_university_data.name != "") {
             single_university_name_elem.innerHTML = `<br />(${some_university_data.name})`;
-            if(blacklisted_status) {
-                single_university_name_elem.parentNode.nextSibling.classList.remove('d-none');
-            }
-        });
-    }
+        }
+        if(blacklisted_status) {
+            single_university_name_elem.parentNode.nextSibling.classList.remove('d-none');
+        }
+    });
 }
 
 const issue_degree = _ => {
