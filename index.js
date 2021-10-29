@@ -67,3 +67,9 @@ const enableLoginButtons = _ => {
 const setLogin = account => {
     setCookie('account', md5(account), 30);
 }
+
+const view_contract = _ => {
+    window.open(`https://ropsten.etherscan.io/address/${CONTRACT_ADDRESS}`, '_blank').focus();
+}
+
+document.getElementById('view_contract').addEventListener('click', view_contract);
