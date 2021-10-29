@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DegreeCoin</title>
+        <link href="assets/bootstrap.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="assets/favicon_1.png">
+        <link rel="stylesheet" href="assets/cryptofont.css">
+    </head>
+    <body class="d-flex flex-column h-100" style="height: 100vh!important;">
+        <div class="container pt-5">
+
+            <h1>DegreeCoin 🏫</h1>
+            <br />
+            <h3>A decentralized Degree equivalency tool based on the Ethereum network. <i class="cf cf-eth"></i></h3>
+            <br />
+            <br />
+            <button type="button" class="btn btn-outline-primary">
+                Total Students with us&emsp;<span class="badge bg-secondary" id="student_count">0</span>
+            </button>
+            <br />
+            <br />
+            <button type="button" class="btn btn-outline-primary">
+                Total Universities with us&emsp;<span class="badge bg-secondary" id="university_count">0</span>
+            </button>
+            <br />
+            <br />
+            <button type="button" class="btn btn-outline-primary">
+                Total Degrees issued&emsp;<span class="badge bg-secondary" id="issued_degree_count">0</span>
+            </button>
+            <br />
+            <br />
+            <br />
+            <h2>Login 🔓</h2>
+            <br />
+            <button type="button" class="btn btn-lg btn-outline-danger" id="metamaskSignInButton" disabled>Metamask <img style="height: 2rem;" src="https://cdn.iconscout.com/icon/free/png-256/metamask-2728406-2261817.png" /></button> &emsp;
+            <p class="d-inline">Other ways coming soon...</p>
+            <br />
+            <br />
+        </div>
+
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <span class="text-muted">Not your keys 🔑, Not your Crypto 💰</span>
+            </div>
+        </footer>
+
+        <script src="assets/bootstrap.bundle.min.js"></script>
+        <script src="assets/web3.min.js"></script>
+        <script src="assets/sweetalert2.js"></script>
+        <script src="assets/md5.js"></script>
+        <script src="assets/contract_data.js"></script>
+        <script src="assets/script.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

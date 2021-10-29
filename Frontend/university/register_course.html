@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>University Dashboard</title>
+
+        <link href="../assets/bootstrap.min.css" rel="stylesheet">    
+        <link rel="shortcut icon" href="../assets/favicon_1.png">
+    </head>
+    <body class="d-flex flex-column h-100" style="height: 100vh!important;">
+        <div class="container pt-5">
+            <h1 class="d-inline link-dark" id="university_logo" role="button">🏫 <span id="university_name">Loading...</span> 🏫</h1>
+            <button class="btn btn-outline-warning btn-lg" style="float: right;" id="logout">Logout 😴</button>
+            <div>
+                <br />
+                <p>Established Since: <span id="established_at">Loading...</span></p>
+                <br />
+                <br />
+                <h2 class="d-inline">Register a course</h2>
+                <br />
+                <br />
+                <br />
+                <form id="register_course">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="name" placeholder="." required>
+                        <label for="name">Course Name</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control" id="description" style="height: 100px"></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="number" class="form-control" id="duration" placeholder="." required max="240" min="1" step="1">
+                        <label for="duration">duration</label>
+                    </div>
+                    <div class="input-group mb-4">
+                        <select class="form-select" id="equivalency" aria-label="Example select with button addon">
+                            <option selected value="-1">Equivalent Course</option>
+                        </select>
+                        <button id="read_more_course_template" type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#course_template_modal" disabled>Read More</button>
+                      </div>
+                    <div class="mb-4 form-check">
+                        <input type="checkbox" class="form-check-input" id="confirm" required>
+                        <label class="form-check-label" for="confirm">Once registered, it cannot be edited or deleted.</label>
+                      </div>
+                      
+                      <button type="submit" class="btn btn-outline-primary" id="register_course_btn">Register Course 📚</button>
+                      <div id="course_loading_spinner" class="spinner-border text-primary d-none" role="status" style="position: relative; top: 10px; left: 5px">
+                          <span class="visually-hidden">Loading...</span>
+                      </div>
+                </form>
+
+            </div>
+            <br />
+            <br />
+        </div>
+        
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <span class="text-muted">Not your keys 🔑, Not your Crypto 💰</span>
+            </div>
+        </footer>
+
+        <!-- Modal for Global Course Information -->
+        <div class="modal fade" id="course_template_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Course Information</h5>
+                        <button button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col col-1 align-text-bottom">
+                                <h6 style="margin-bottom: 0px; margin-top: 1em;">Name: </h6>
+                            </div>
+                            <h3 class="col col-11 ps-4" id="course_name"></h3>
+                        </div>
+                        <div class="row">
+                            <h6 class="col col-1">Description: </h6>
+                            <p class="col col-11 ps-4" id="course_description"></p>
+                        </div>
+                        <div class="row">
+                            <div class="col col-1 align-text-bottom">
+                                <h6 style="margin-bottom: 0px; margin-top: 0.3em;">Duration: </h6>
+                            </div>
+                            <h5 class="col col-11 ps-4" id="course_duration"></h5>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../assets/bootstrap.bundle.min.js"></script>
+        <script src="../assets/web3.min.js"></script>
+        <script src="../assets/sweetalert2.js"></script>
+        <script src="../assets/md5.js"></script>
+        <script src="../assets/contract_data.js"></script>
+        <script src="../assets/script.js"></script>
+        <script src="register_course.js"></script>
+    </body>
+</html>

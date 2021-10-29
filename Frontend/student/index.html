@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Dashboard 👨🏻‍🎓</title>
+
+        <link href="../assets/bootstrap.min.css" rel="stylesheet">    
+        <link rel="shortcut icon" href="../assets/favicon_1.png">
+    </head>
+    <body class="d-flex flex-column h-100" style="height: 100vh!important;">
+        <div class="container pt-5">
+            <h1 class="d-inline link-dark" id="student_logo" role="button">Hey there 👋🏻</h1>
+            <button class="btn btn-outline-warning btn-lg" style="float: right;" id="logout">Logout 😴</button>
+            <div>
+                <br />
+                <br />
+                <form class="d-block" action="search.html" method="get">
+                    <div class="input-group">
+                        <input type="text" name="address" class="form-control" placeholder="Search for any University or Student by Address 🔎" aria-label="Username" aria-describedby="basic-addon1" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <br />
+                <br />
+                <br />
+                <h2 class="d-inline">Degrees (Total: <span id="student_degree_count">0</span>)</h2>
+                <br />
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" width="5%">ID</th>
+                            <th scope="col" width="10%">Issued at</th>
+                            <th scope="col" width="15%">CourseName</th>
+                            <th scope="col" width="15%">University</th>
+                            <th scope="col" width="5%">CGPA</th>
+                            <th scope="col" width="15%">Grade</th>
+                            <th scope="col" width="30%">Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student_degrees"></tbody>
+                </table>
+            </div>           
+            <br />
+            <br />
+        </div>
+        
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <span class="text-muted">Not your keys 🔑, Not your Crypto 💰</span>
+            </div>
+        </footer>
+
+        <script src="../assets/bootstrap.bundle.min.js"></script>
+        <script src="../assets/web3.min.js"></script>
+        <script src="../assets/sweetalert2.js"></script>
+        <script src="../assets/moment.js"></script>
+        <script src="../assets/md5.js"></script>
+        <script src="../assets/contract_data.js"></script>
+        <script src="../assets/script.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

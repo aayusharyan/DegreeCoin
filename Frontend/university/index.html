@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>University Dashboard</title>
+
+        <link href="../assets/bootstrap.min.css" rel="stylesheet">    
+        <link rel="shortcut icon" href="../assets/favicon_1.png">
+    </head>
+    <body class="d-flex flex-column h-100" style="height: 100vh!important;">
+        <div class="container pt-5">
+            <h1 class="d-inline link-dark" id="university_logo" role="button">🏫 <span id="university_name">Loading...</span> 🏫</h1>
+            <button class="btn btn-outline-warning btn-lg" style="float: right;" id="logout">Logout 😴</button>
+            <div>
+                <br />
+                <p>Established Since: <span id="established_at">Loading...</span></p>
+                <br />
+                <br />
+                <div id="on_invited" class="d-none">
+                    <div class="card text-center">
+                        <div class="card-header">⚠ Note ⚠</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Registration Pending</h5>
+                            <p class="card-text">
+                                You have been invited by - 0x3F648a5fa3d785324530855661d18EfE5F1C8b09.
+                                <br />
+                                You need to register before you can start adding courses and issuing degrees.
+                            </p>
+                            <button class="btn btn-primary" id="register_university">Register Now</button>
+                            <div id="register_university_spinner" class="spinner-border text-primary d-none" role="status" style="position: relative; top: 10px; left: 5px">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                            By clicking Register Now, you are accepting the terms and conditions of this platform.
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <div id="registered_university_content">
+                    <form class="d-block" action="search.html" method="get">
+                        <div class="input-group">
+                            <input type="text" name="address" class="form-control" placeholder="Search for any University or Student by Address 🔎" aria-label="Username" aria-describedby="basic-addon1" required>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <br />
+                    <br />
+                    <h2 class="d-inline">Offering courses</h2>
+                    <button class="btn btn-outline-primary" style="float: right;" id="register_course">Add New Course ➕</button>
+                    <br />
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" width="5%">ID</th>
+                                <th scope="col" width="20%">CourseName</th>
+                                <th scope="col" width="20%">Duration</th>
+                                <th scope="col" width="55%">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="offering_courses"></tbody>
+                    </table>
+                    <br />
+                    <br />
+                    <br />
+                    <button class="btn btn-outline-success" id="issue_degree">📜 Issue Degree to a Student</button>
+                    &emsp;
+                    <div class="input-group d-none" style="width: 400px; display: inline-flex; position: relative; top: 2px;" id="edit_form">
+                        <input type="text" class="form-control" id="new_university_name" placeholder="University Name 🖊" aria-label="Username" aria-describedby="basic-addon1" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary my-2 my-sm-0 d-inline" id="update_university_name" type="submit" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">Update</button>
+                        </div>
+                    </div>
+                    <div id="edit_name_loading_spinner" class="spinner-border text-primary d-none" role="status" style="position: relative; top: 10px; left: 5px">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <button class="btn btn-outline-primary" id="edit_university_name">🖊 Edit University Name </button>
+                    <br />
+                    <br />
+                    <button class="btn btn-outline-dark" id="invite_university">Invite a university 📤</button>
+                    <div id="only_owner" class="d-inline d-none">
+                        &emsp;
+                        <button class="btn btn-outline-warning">Create a Global Standard 🌐</button>
+                    </div>
+                    <br />
+                    <br />
+                    <div id="blacklisted_university_list" class="d-none">
+                        <br />
+                        <br />
+                        <h3>Blacklisted Universities</h3>
+                        <br />
+                        <div class="container px-0">
+                            <div class="row" id="blacklisted_universities_container"></div>
+                        </div>
+                    </div>
+                    <div id="blacklisted_course_list" class="d-none">
+                        <br />
+                        <br />
+                        <h3>Blacklisted Global Courses</h3>
+                        <br />
+                        <div class="container px-0">
+                            <div class="row" id="blacklisted_courses_container"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
+        
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <span class="text-muted">Not your keys 🔑, Not your Crypto 💰</span>
+            </div>
+        </footer>
+
+        <!-- Modal for Blacklisted Course Information -->
+        <div class="modal fade" id="course_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Course Information</h5>
+                        <button button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col col-1 align-text-bottom">
+                                <h6 style="margin-bottom: 0px; margin-top: 1em;">Name: </h6>
+                            </div>
+                            <h3 class="col col-11 ps-4" id="course_name"></h3>
+                        </div>
+                        <div class="row">
+                            <h6 class="col col-1">Description: </h6>
+                            <p class="col col-11 ps-4" id="course_description"></p>
+                        </div>
+                        <div class="row">
+                            <div class="col col-1 align-text-bottom">
+                                <h6 style="margin-bottom: 0px; margin-top: 0.3em;">Duration: </h6>
+                            </div>
+                            <h5 class="col col-11 ps-4" id="course_duration"></h5>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <div id="whitelist_course_spinner" class="spinner-border text-success d-none" role="status" style="position: relative; right: 5px">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-success" id="whitelist_course">Whitelist Global Standard ✅</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../assets/bootstrap.bundle.min.js"></script>
+        <script src="../assets/web3.min.js"></script>
+        <script src="../assets/sweetalert2.js"></script>
+        <script src="../assets/md5.js"></script>
+        <script src="../assets/contract_data.js"></script>
+        <script src="../assets/script.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

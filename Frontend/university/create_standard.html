@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>University Dashboard</title>
+
+        <link href="../assets/bootstrap.min.css" rel="stylesheet">    
+        <link rel="shortcut icon" href="../assets/favicon_1.png">
+    </head>
+    <body class="d-flex flex-column h-100" style="height: 100vh!important;">
+        <div class="container pt-5">
+            <h1 class="d-inline link-dark" id="university_logo" role="button">🏫 <span id="university_name">Loading...</span> 🏫</h1>
+            <button class="btn btn-outline-warning btn-lg" style="float: right;" id="logout">Logout 😴</button>
+            <div>
+                <br />
+                <p>Established Since: <span id="established_at">Loading...</span></p>
+                <br />
+                <br />
+                <h2 class="d-inline">Create a global Standard</h2>
+                <br />
+                <br />
+                <br />
+                <form id="register_standard">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="name" placeholder="." required>
+                        <label for="name">Course Name</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control" id="description" style="height: 100px"></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="number" class="form-control" id="duration" placeholder="." required max="240" min="1" step="1">
+                        <label for="duration">duration</label>
+                    </div>
+
+                    <div class="mb-4 form-check">
+                        <input type="checkbox" class="form-check-input" id="confirm" required>
+                        <label class="form-check-label" for="confirm">Once registered, it cannot be edited or deleted and will be available for everyone to use.</label>
+                      </div>
+                      
+                      <button type="submit" class="btn btn-outline-primary" id="register_standard_btn">Create Standard 🌐</button>
+                      <div id="register_standard_spinner" class="spinner-border text-primary d-none" role="status" style="position: relative; top: 10px; left: 5px">
+                          <span class="visually-hidden">Loading...</span>
+                      </div>
+                </form>
+
+            </div>
+            <br />
+            <br />
+        </div>
+        
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <span class="text-muted">Not your keys 🔑, Not your Crypto 💰</span>
+            </div>
+        </footer>
+
+        <script src="../assets/bootstrap.bundle.min.js"></script>
+        <script src="../assets/web3.min.js"></script>
+        <script src="../assets/sweetalert2.js"></script>
+        <script src="../assets/md5.js"></script>
+        <script src="../assets/contract_data.js"></script>
+        <script src="../assets/script.js"></script>
+        <script src="create_standard.js"></script>
+    </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>University Dashboard</title>
+
+        <link href="../assets/bootstrap.min.css" rel="stylesheet">    
+        <link rel="shortcut icon" href="../assets/favicon_1.png">
+    </head>
+    <body class="d-flex flex-column h-100" style="height: 100vh!important;">
+        <div class="container pt-5">
+            <h1 class="d-inline link-dark" id="university_logo" role="button">🏫 <span id="university_name">Loading...</span> 🏫</h1>
+            <button class="btn btn-outline-warning btn-lg" style="float: right;" id="logout">Logout 😴</button>
+            <div>
+                <br />
+                <p>Established Since: <span id="established_at">Loading...</span></p>
+                <br />
+                <br />
+                <form class="d-block">
+                    <div class="input-group">
+                        <input type="text" id="search_field" class="form-control" name="address" placeholder="Ummm..." aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-success my-2 my-sm-0 d-inline" type="submit" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">Search</button>
+                        </div>
+                      </div>
+                </form>
+                <br />
+                <br />
+                <h3 class="d-inline">Search for: <span id="search_address">Ummm...</span></h3>
+                <div>
+                    <br />
+                    <h4 class="d-inline"><span id="address_name"></span></h4>
+                    <h3 class="d-inline"><span class="badge bg-warning" id="account_type_badge">...</span> <span class="badge bg-danger d-none" id="blacklisted_badge">Blacklisted</span> <span class="badge bg-success d-none" id="owner_account">Owner</span></h3>
+                    <button class="btn btn-outline-primary hidden d-none" id="issue_degree" style="float: right;">Issue Degree 📜</button>
+                    <button class="btn btn-outline-danger hidden d-none" id="blacklist_university" style="float: right;">Blacklist 🚫</button>
+                    <div id="whitelisting_spinner" class="spinner-border text-success d-none" role="status" style="float: right; position: relative; top: 3px; left: 8px">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <button class="btn btn-outline-success hidden d-none" id="whitelist_university" style="float: right;">whitelist ✅</button>
+                    <div id="data_student" class="d-none">
+                        <br />
+                        <br />
+                        <br />
+                        <h2 class="d-inline">Degrees (Total: <span id="student_degree_count">0</span>)</h2>
+                        <br />
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" width="5%">ID</th>
+                                    <th scope="col" width="10%">Issued at</th>
+                                    <th scope="col" width="20%">CourseName</th>
+                                    <th scope="col" width="10%">University</th>
+                                    <th scope="col" width="5%">CGPA</th>
+                                    <th scope="col" width="15%">Grade</th>
+                                    <th scope="col" width="30%">Comments</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student_degrees"></tbody>
+                        </table>
+                    </div>
+                    <div id="data_university" class="d-none">
+                        <br />
+                        <h6 id="invited_bt_text" role="button" class="link-primary">Invited by: <span id="invited_by_address">🤔</span></h6>
+                        <p>Established Since: <span id="search_universite_established_since">Loading...</span></p>
+                        <br />
+                        <br />
+                        <h2 class="d-inline">Courses Offered</h2>
+                        <br />
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" width="5%">ID</th>
+                                    <th scope="col" width="30%">CourseName</th>
+                                    <th scope="col" width="20%">Duration</th>
+                                    <th scope="col" width="45%">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="courses_offered"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
+        
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <span class="text-muted">Not your keys 🔑, Not your Crypto 💰</span>
+            </div>
+        </footer>
+
+        <!-- Modal for Degree Equivalency -->
+        <div class="modal fade" id="equivalency_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Comparing Courses</h5>
+                        <button button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col" width="10%"></th>
+                                <th scope="col" width="30%">Their Course</th>
+                                <th scope="col" width="30%" id="global_course">Global Standard <span class="badge bg-danger d-none" id="blacklisted_course_badge">Blacklisted</span></th>
+                                <th scope="col" width="30%">My Course</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Name</th>
+                                <td id="their_course_name"></td>
+                                <td id="equivalent_course_name"></td>
+                                <td id="my_course_name"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Duration</th>
+                                <td id="their_course_duration"></td>
+                                <td id="equivalent_course_duration"></td>
+                                <td id="my_course_duration"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Description</th>
+                                <td id="their_course_description"></td>
+                                <td id="equivalent_course_description"></td>
+                                <td id="my_course_description"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger d-none" id="blacklist_course">Blacklist Global Standard 🚫</button>
+                        <div id="whitelist_course_spinner" class="spinner-border text-success d-none" role="status" style="position: relative; right: 5px">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-success d-none" id="whitelist_course">Whitelist Global Standard ✅</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../assets/bootstrap.bundle.min.js"></script>
+        <script src="../assets/web3.min.js"></script>
+        <script src="../assets/sweetalert2.js"></script>
+        <script src="../assets/moment.js"></script>
+        <script src="../assets/md5.js"></script>
+        <script src="../assets/contract_data.js"></script>
+        <script src="../assets/script.js"></script>
+        <script src="search.js"></script>
+    </body>
+</html>
