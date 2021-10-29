@@ -101,6 +101,11 @@ function getCookie(c_name) {
     }
 }
 
+const requestCorrectNetwork = async event => {
+    event.preventDefault();
+    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x3'}]});
+}
+
 
 //Event Listener when user disconnects from wallet.
 ethereum.on('accountsChanged', async accounts => {

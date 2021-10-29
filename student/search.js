@@ -10,7 +10,7 @@
     if(!await isNetworkRopsten()) {
         await Swal.fire({
             title: "Network Error!", 
-            html: "You are not connected to the Ropsten network.<br />Change metamask network and login again.<br /><br /><a href='https://yush.dev' target='_blank'>How to do that?</a>",
+            html: "You are not connected to the Ropsten network.<br />Change metamask network and login again.<br /><br /><a href='#' onClick='requestCorrectNetwork(event);'>Change Network</a>",
             icon: "error",
             allowOutsideClick: false
         });
