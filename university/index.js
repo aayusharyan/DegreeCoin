@@ -34,13 +34,13 @@
                 establishedAt: 0,
                 courses: [],
             };
-            document.getElementById('registered_university_content').classList.add('d-none');
         }
         else throw Error(e);
     }
 
     if(university_data.establishedAt == 0) {
         document.getElementById('on_invited').classList.remove('d-none');
+        document.getElementById('registered_university_content').classList.add('d-none');
         document.getElementById('register_university').addEventListener('click', register_university);
     }
 
