@@ -21,7 +21,7 @@
                 <br />
                 <form id="register_course">
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="name" placeholder="." required>
+                        <input type="text" class="form-control" id="name" placeholder="." required autocomplete="off">
                         <label for="name">Course Name</label>
                     </div>
                     <div class="form-floating mb-4">
@@ -29,7 +29,7 @@
                         <label for="description">Description</label>
                     </div>
                     <div class="form-floating mb-4">
-                        <input type="number" class="form-control" id="duration" placeholder="." required max="240" min="1" step="1">
+                        <input type="number" class="form-control" id="duration" placeholder="." required max="240" min="1" step="1" autocomplete="off">
                         <label for="duration">duration</label>
                     </div>
                     <div class="input-group mb-4">
@@ -39,7 +39,7 @@
                         <button id="read_more_course_template" type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#course_template_modal" disabled>Read More</button>
                       </div>
                     <div class="mb-4 form-check">
-                        <input type="checkbox" class="form-check-input" id="confirm" required>
+                        <input type="checkbox" class="form-check-input" id="confirm" required autocomplete="off">
                         <label class="form-check-label" for="confirm">Once registered, it cannot be edited or deleted.</label>
                       </div>
                       

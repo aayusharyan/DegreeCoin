@@ -21,18 +21,18 @@
                 <br />
                 <form id="issue_degree">
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="student_address" placeholder="." required>
+                        <input type="text" class="form-control" id="student_address" placeholder="." required autocomplete="off" autocomplete="off">
                         <label for="student_address">Student address</label>
                     </div>
                     <select class="form-select mb-4" id="course" required>
                         <option selected disabled value="-1">Course</option>
                     </select>
                     <div class="form-floating mb-4">
-                        <input type="number" class="form-control" id="cgpa" placeholder="." required max="10" min="0" step="0.01">
+                        <input type="number" class="form-control" id="cgpa" placeholder="." required max="10" min="0" step="0.01" autocomplete="off">
                         <label for="cgpa">CGPA</label>
                     </div>
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="grade" placeholder="." required>
+                        <input type="text" class="form-control" id="grade" placeholder="." required autocomplete="off">
                         <label for="grade">Grade</label>
                     </div>
                     <div class="form-floating mb-4">
@@ -40,7 +40,7 @@
                         <label for="comments">Comments</label>
                     </div>
                     <div class="mb-4 form-check">
-                      <input type="checkbox" class="form-check-input" id="confirm" required>
+                      <input type="checkbox" class="form-check-input" id="confirm" required autocomplete="off">
                       <label class="form-check-label" for="confirm">Degree once issued cannot be revoked or edited.</label>
                     </div>
                     
